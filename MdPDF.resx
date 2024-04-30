@@ -121,6 +121,32 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="rotateLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAA3RJREFUWEe1
+        V0trFEEQ7sNOzyYREV/Rzc50oiIoKGIEEVEEX+ATlFzUgydRUEgkiHiJBxFEfBBR8OAfCIIkiDmIehDN
+        xRjjutszG9GYhwYPkpNBUOJXszXj7Ma4D3c+KHb7q+qu6prumhpRDrSShxzbuOnYsse15TvId/x/wepo
+        oJNyjVbGNTgah0wXirblfTYVCKiD+R5HyaPppJjPqsqgbXM/Fhvxnc0U4+nQCjGXzYW2zF3g+0M2H5C1
+        I6wuD3B+hhf5GVowEOw85ah4E5sHSK8WMqvMdmRj1Ld1baPzVbMw2KQ4sLMnPHnStcyz/kK+aNuYcCxj
+        A5v/FYMNNUltyauw/+HNU7I31VRXz+rZAeNv7Ggsa8d3ZKzYVh778gup3s3mRZFRxnpkYILn9meVXMWq
+        mYBBFxs6Q5jocUgzc55U8kwzytwTrKHkA6bzgbSe8I0ytrmTaTFYL+pCfCvTZSP750zNXAepXgaFd2hc
+        y7jFdADwLY5lHuBhxcAmOzmIUd0gFjDtHbobrBh5n6ixmI4EeAQu+cLhbmMKpCXfEKmVeZqpyMBFbZp8
+        ekS60VjHuwdZm/DICKFVbFPgz45tFv49x53tY5vIgSL1moM4h+dvPvcGKBqsrzqGlohFOhnbxkPadBsH
+        0E0nPFdqLXmQ9VUHqubtnA/jK/2nYDgATQF4lQ/1ey/bVx043O3ssFCm8AaTn2hQ8VurBAwun7O4wHEg
+        lIGUN7CMU2wfCeDDL/OBUFNDGejjwXm2jQTcW+QFAOnClTDv0kBbxnG2jQzwMxxyTj3FRU8RviJRAmX4
+        Ul4AZbzWqwJqYnzn1COE2zkvC8OqdikPIwMcP/YCUMZ1pnLO/cgg1P1S291BbbhuMFeyWVUQ9B1JuZap
+        HJCeZ6EgCmUclbKXejw2rz4KsjCrpCxzOU8pGaNJUUNdUNFswkFLocM8qaBYUVMaZBe/TM+O3OdX/n3F
+        eUi7VmwLm5SEDA405l6B5NpyPEb6ymL1v+EmxEJM6OaJXk+PwA6zuijwim/FvPAmBtCU7mN16aBKFVqE
+        KtdLKtn04konjY307UdXlxZn2x5I8A0JLkvPvqyvokK4dnw7MnAPjqf8hUuQMdyYCwONYh4v8//42Cji
+        OEQnHWXewc4ewslbyCT+f8EVfYTfyxgfwz1v/pwQtTytCIT4DYWLSitDErQjAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>239, 17</value>
+  </metadata>
+  <metadata name="historyMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="FileOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAHxJREFUWEft

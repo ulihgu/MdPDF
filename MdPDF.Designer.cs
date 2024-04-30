@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MdPDF));
             this.panTop = new System.Windows.Forms.Panel();
+            this.rotateLabel = new System.Windows.Forms.Label();
+            this.historyMenu = new System.Windows.Forms.MenuStrip();
+            this.iniMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.FileOpen = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.Label();
             this.Min = new System.Windows.Forms.Label();
             this.Max = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.Label();
-            this.historyMenu = new System.Windows.Forms.MenuStrip();
             this.panel2 = new System.Windows.Forms.Panel();
             this.leftPdf = new System.Windows.Forms.Label();
             this.rightPdf = new System.Windows.Forms.Label();
@@ -45,7 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ViewerPdf = new PdfiumViewer.PdfViewer();
             this.MenuePdf = new PdfiumViewer.PdfViewer();
-            this.iniMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panTop.SuspendLayout();
             this.historyMenu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -54,6 +57,7 @@
             // panTop
             // 
             this.panTop.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panTop.Controls.Add(this.rotateLabel);
             this.panTop.Controls.Add(this.historyMenu);
             this.panTop.Controls.Add(this.FileOpen);
             this.panTop.Controls.Add(this.logo);
@@ -64,9 +68,49 @@
             this.panTop.Location = new System.Drawing.Point(0, 0);
             this.panTop.Margin = new System.Windows.Forms.Padding(6);
             this.panTop.Name = "panTop";
-            this.panTop.Size = new System.Drawing.Size(2026, 58);
+            this.panTop.Size = new System.Drawing.Size(2026, 79);
             this.panTop.TabIndex = 6;
             this.panTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panTop_MouseDown);
+            // 
+            // rotateLabel
+            // 
+            this.rotateLabel.BackColor = System.Drawing.Color.Transparent;
+            this.rotateLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rotateLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.rotateLabel.ForeColor = System.Drawing.Color.White;
+            this.rotateLabel.Image = ((System.Drawing.Image)(resources.GetObject("rotateLabel.Image")));
+            this.rotateLabel.Location = new System.Drawing.Point(167, 0);
+            this.rotateLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.rotateLabel.Name = "rotateLabel";
+            this.rotateLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rotateLabel.Size = new System.Drawing.Size(91, 79);
+            this.rotateLabel.TabIndex = 7;
+            this.rotateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.rotateLabel, "调整旋转角度");
+            this.rotateLabel.Click += new System.EventHandler(this.rotateLabel_Click);
+            // 
+            // historyMenu
+            // 
+            this.historyMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.historyMenu.BackColor = System.Drawing.Color.LightSlateGray;
+            this.historyMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.historyMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.historyMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.historyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iniMenu});
+            this.historyMenu.Location = new System.Drawing.Point(251, 18);
+            this.historyMenu.Name = "historyMenu";
+            this.historyMenu.Size = new System.Drawing.Size(138, 39);
+            this.historyMenu.TabIndex = 6;
+            this.historyMenu.Text = "历史记录";
+            // 
+            // iniMenu
+            // 
+            this.iniMenu.Name = "iniMenu";
+            this.iniMenu.Size = new System.Drawing.Size(130, 35);
+            this.iniMenu.Text = "历史记录";
             // 
             // FileOpen
             // 
@@ -76,11 +120,11 @@
             this.FileOpen.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.FileOpen.ForeColor = System.Drawing.Color.White;
             this.FileOpen.Image = ((System.Drawing.Image)(resources.GetObject("FileOpen.Image")));
-            this.FileOpen.Location = new System.Drawing.Point(85, 0);
+            this.FileOpen.Location = new System.Drawing.Point(91, 0);
             this.FileOpen.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.FileOpen.Name = "FileOpen";
             this.FileOpen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FileOpen.Size = new System.Drawing.Size(69, 58);
+            this.FileOpen.Size = new System.Drawing.Size(76, 79);
             this.FileOpen.TabIndex = 5;
             this.FileOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.FileOpen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FileOpen_MouseClick);
@@ -96,7 +140,7 @@
             this.logo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.logo.Name = "logo";
             this.logo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.logo.Size = new System.Drawing.Size(85, 58);
+            this.logo.Size = new System.Drawing.Size(91, 79);
             this.logo.TabIndex = 4;
             this.logo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -111,7 +155,7 @@
             this.Min.Location = new System.Drawing.Point(1782, 0);
             this.Min.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Min.Name = "Min";
-            this.Min.Size = new System.Drawing.Size(85, 58);
+            this.Min.Size = new System.Drawing.Size(85, 79);
             this.Min.TabIndex = 3;
             this.Min.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Min.Click += new System.EventHandler(this.Min_Click);
@@ -127,7 +171,7 @@
             this.Max.Location = new System.Drawing.Point(1867, 0);
             this.Max.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Max.Name = "Max";
-            this.Max.Size = new System.Drawing.Size(63, 58);
+            this.Max.Size = new System.Drawing.Size(63, 79);
             this.Max.TabIndex = 2;
             this.Max.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Max.Click += new System.EventHandler(this.Max_Click);
@@ -143,27 +187,10 @@
             this.exit.Location = new System.Drawing.Point(1930, 0);
             this.exit.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(96, 58);
+            this.exit.Size = new System.Drawing.Size(96, 79);
             this.exit.TabIndex = 1;
             this.exit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.exit.Click += new System.EventHandler(this.exit_Click);
-            // 
-            // historyMenu
-            // 
-            this.historyMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.historyMenu.BackColor = System.Drawing.Color.LightSlateGray;
-            this.historyMenu.Dock = System.Windows.Forms.DockStyle.None;
-            this.historyMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.historyMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.historyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.iniMenu});
-            this.historyMenu.Location = new System.Drawing.Point(165, 9);
-            this.historyMenu.Name = "historyMenu";
-            this.historyMenu.Size = new System.Drawing.Size(138, 39);
-            this.historyMenu.TabIndex = 6;
-            this.historyMenu.Text = "历史记录";
             // 
             // panel2
             // 
@@ -194,7 +221,6 @@
             this.leftPdf.Name = "leftPdf";
             this.leftPdf.Size = new System.Drawing.Size(77, 46);
             this.leftPdf.TabIndex = 7;
-            this.leftPdf.Text = "-90";
             this.leftPdf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.leftPdf.Click += new System.EventHandler(this.leftPdf_Click);
             // 
@@ -211,7 +237,6 @@
             this.rightPdf.Name = "rightPdf";
             this.rightPdf.Size = new System.Drawing.Size(86, 46);
             this.rightPdf.TabIndex = 6;
-            this.rightPdf.Text = "+90";
             this.rightPdf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rightPdf.Click += new System.EventHandler(this.rightPdf_Click);
             // 
@@ -228,7 +253,7 @@
             this.menupage.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.menupage.Size = new System.Drawing.Size(320, 46);
             this.menupage.TabIndex = 5;
-            this.menupage.Text = "页码：第00000页";
+            this.menupage.Text = "页码：第0页";
             this.menupage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
@@ -258,7 +283,7 @@
             this.CurrentPage.Name = "CurrentPage";
             this.CurrentPage.Size = new System.Drawing.Size(139, 46);
             this.CurrentPage.TabIndex = 2;
-            this.CurrentPage.Text = "100";
+            this.CurrentPage.Text = "0";
             this.CurrentPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -279,11 +304,11 @@
             // ViewerPdf
             // 
             this.ViewerPdf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ViewerPdf.Location = new System.Drawing.Point(409, 58);
+            this.ViewerPdf.Location = new System.Drawing.Point(409, 79);
             this.ViewerPdf.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ViewerPdf.Name = "ViewerPdf";
             this.ViewerPdf.ShowBookmarks = false;
-            this.ViewerPdf.Size = new System.Drawing.Size(1617, 1023);
+            this.ViewerPdf.Size = new System.Drawing.Size(1617, 1002);
             this.ViewerPdf.TabIndex = 16;
             this.ViewerPdf.ZoomMode = PdfiumViewer.PdfViewerZoomMode.FitBest;
             // 
@@ -291,20 +316,14 @@
             // 
             this.MenuePdf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MenuePdf.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MenuePdf.Location = new System.Drawing.Point(0, 58);
+            this.MenuePdf.Location = new System.Drawing.Point(0, 79);
             this.MenuePdf.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MenuePdf.Name = "MenuePdf";
             this.MenuePdf.ShowBookmarks = false;
             this.MenuePdf.ShowToolbar = false;
-            this.MenuePdf.Size = new System.Drawing.Size(409, 1023);
+            this.MenuePdf.Size = new System.Drawing.Size(409, 1002);
             this.MenuePdf.TabIndex = 12;
             this.MenuePdf.ZoomMode = PdfiumViewer.PdfViewerZoomMode.FitBest;
-            // 
-            // iniMenu
-            // 
-            this.iniMenu.Name = "iniMenu";
-            this.iniMenu.Size = new System.Drawing.Size(130, 35);
-            this.iniMenu.Text = "历史记录";
             // 
             // MdPDF
             // 
@@ -347,6 +366,8 @@
         private System.Windows.Forms.Label leftPdf;
         private System.Windows.Forms.MenuStrip historyMenu;
         private System.Windows.Forms.ToolStripMenuItem iniMenu;
+        private System.Windows.Forms.Label rotateLabel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

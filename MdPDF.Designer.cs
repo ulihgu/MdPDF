@@ -35,22 +35,26 @@
             this.Min = new System.Windows.Forms.Label();
             this.Max = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.Label();
+            this.historyMenu = new System.Windows.Forms.MenuStrip();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.leftPdf = new System.Windows.Forms.Label();
+            this.rightPdf = new System.Windows.Forms.Label();
             this.menupage = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CurrentPage = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ViewerPdf = new PdfiumViewer.PdfViewer();
             this.MenuePdf = new PdfiumViewer.PdfViewer();
-            this.rightPdf = new System.Windows.Forms.Label();
-            this.leftPdf = new System.Windows.Forms.Label();
+            this.iniMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.panTop.SuspendLayout();
+            this.historyMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panTop
             // 
             this.panTop.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panTop.Controls.Add(this.historyMenu);
             this.panTop.Controls.Add(this.FileOpen);
             this.panTop.Controls.Add(this.logo);
             this.panTop.Controls.Add(this.Min);
@@ -144,6 +148,23 @@
             this.exit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
+            // historyMenu
+            // 
+            this.historyMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.historyMenu.BackColor = System.Drawing.Color.LightSlateGray;
+            this.historyMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.historyMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.historyMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.historyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iniMenu});
+            this.historyMenu.Location = new System.Drawing.Point(165, 9);
+            this.historyMenu.Name = "historyMenu";
+            this.historyMenu.Size = new System.Drawing.Size(138, 39);
+            this.historyMenu.TabIndex = 6;
+            this.historyMenu.Text = "历史记录";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -159,6 +180,40 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2026, 46);
             this.panel2.TabIndex = 10;
+            // 
+            // leftPdf
+            // 
+            this.leftPdf.BackColor = System.Drawing.Color.Transparent;
+            this.leftPdf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.leftPdf.Dock = System.Windows.Forms.DockStyle.Right;
+            this.leftPdf.Font = new System.Drawing.Font("楷体", 6.375F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.leftPdf.ForeColor = System.Drawing.Color.Red;
+            this.leftPdf.Image = ((System.Drawing.Image)(resources.GetObject("leftPdf.Image")));
+            this.leftPdf.Location = new System.Drawing.Point(1569, 0);
+            this.leftPdf.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.leftPdf.Name = "leftPdf";
+            this.leftPdf.Size = new System.Drawing.Size(77, 46);
+            this.leftPdf.TabIndex = 7;
+            this.leftPdf.Text = "-90";
+            this.leftPdf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.leftPdf.Click += new System.EventHandler(this.leftPdf_Click);
+            // 
+            // rightPdf
+            // 
+            this.rightPdf.BackColor = System.Drawing.Color.Transparent;
+            this.rightPdf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rightPdf.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rightPdf.Font = new System.Drawing.Font("楷体", 6.375F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rightPdf.ForeColor = System.Drawing.Color.Red;
+            this.rightPdf.Image = ((System.Drawing.Image)(resources.GetObject("rightPdf.Image")));
+            this.rightPdf.Location = new System.Drawing.Point(1646, 0);
+            this.rightPdf.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.rightPdf.Name = "rightPdf";
+            this.rightPdf.Size = new System.Drawing.Size(86, 46);
+            this.rightPdf.TabIndex = 6;
+            this.rightPdf.Text = "+90";
+            this.rightPdf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rightPdf.Click += new System.EventHandler(this.rightPdf_Click);
             // 
             // menupage
             // 
@@ -245,37 +300,11 @@
             this.MenuePdf.TabIndex = 12;
             this.MenuePdf.ZoomMode = PdfiumViewer.PdfViewerZoomMode.FitBest;
             // 
-            // rightPdf
+            // iniMenu
             // 
-            this.rightPdf.BackColor = System.Drawing.Color.Transparent;
-            this.rightPdf.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rightPdf.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rightPdf.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rightPdf.ForeColor = System.Drawing.Color.White;
-            this.rightPdf.Image = ((System.Drawing.Image)(resources.GetObject("rightPdf.Image")));
-            this.rightPdf.Location = new System.Drawing.Point(1626, 0);
-            this.rightPdf.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.rightPdf.Name = "rightPdf";
-            this.rightPdf.Size = new System.Drawing.Size(106, 46);
-            this.rightPdf.TabIndex = 6;
-            this.rightPdf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rightPdf.Click += new System.EventHandler(this.rightPdf_Click);
-            // 
-            // leftPdf
-            // 
-            this.leftPdf.BackColor = System.Drawing.Color.Transparent;
-            this.leftPdf.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.leftPdf.Dock = System.Windows.Forms.DockStyle.Right;
-            this.leftPdf.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.leftPdf.ForeColor = System.Drawing.Color.White;
-            this.leftPdf.Image = ((System.Drawing.Image)(resources.GetObject("leftPdf.Image")));
-            this.leftPdf.Location = new System.Drawing.Point(1508, 0);
-            this.leftPdf.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.leftPdf.Name = "leftPdf";
-            this.leftPdf.Size = new System.Drawing.Size(118, 46);
-            this.leftPdf.TabIndex = 7;
-            this.leftPdf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.leftPdf.Click += new System.EventHandler(this.leftPdf_Click);
+            this.iniMenu.Name = "iniMenu";
+            this.iniMenu.Size = new System.Drawing.Size(130, 35);
+            this.iniMenu.Text = "历史记录";
             // 
             // MdPDF
             // 
@@ -289,7 +318,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MdPDF";
             this.Text = "PDF编辑器";
+            this.Load += new System.EventHandler(this.MdPDF_Load);
             this.panTop.ResumeLayout(false);
+            this.panTop.PerformLayout();
+            this.historyMenu.ResumeLayout(false);
+            this.historyMenu.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -312,6 +345,8 @@
         private PdfiumViewer.PdfViewer MenuePdf;
         private System.Windows.Forms.Label rightPdf;
         private System.Windows.Forms.Label leftPdf;
+        private System.Windows.Forms.MenuStrip historyMenu;
+        private System.Windows.Forms.ToolStripMenuItem iniMenu;
     }
 }
 

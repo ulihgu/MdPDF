@@ -1,9 +1,11 @@
-﻿using MdPDF.Properties;
+﻿using iTextSharp.text;
+using MdPDF.Properties;
 using PdfiumViewer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -11,15 +13,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace MdPDF
 {
     public partial class MdPDF : Form
     {
         private ContextMenuStrip contextMenuStrip;
+        private int currentPage = 0;
         public MdPDF()
         {
-            InitializeComponent();           
+            InitializeComponent();
             //配置窗口类
             FormBorderStyle = FormBorderStyle.None;//配置
             StartPosition = FormStartPosition.CenterScreen;
@@ -28,17 +32,33 @@ namespace MdPDF
 
             // 创建菜单项
             ToolStripMenuItem menuItem1 = new ToolStripMenuItem("打开PDF");
-            ToolStripMenuItem menuItem2 = new ToolStripMenuItem("设置");
-            ToolStripMenuItem menuItem3 = new ToolStripMenuItem("退出");
+            ToolStripMenuItem menuItem2 = new ToolStripMenuItem("顺时90C");
+            ToolStripMenuItem menuItem3 = new ToolStripMenuItem("顺时180C");
+            ToolStripMenuItem menuItem4 = new ToolStripMenuItem("顺时270C");
+            ToolStripMenuItem menuItem5 = new ToolStripMenuItem("逆时90C");
+            ToolStripMenuItem menuItem6 = new ToolStripMenuItem("逆时180C");
+            ToolStripMenuItem menuItem7 = new ToolStripMenuItem("逆时270C");
+            ToolStripMenuItem menuItem8 = new ToolStripMenuItem("复位");
+            ToolStripMenuItem menuItem90 = new ToolStripMenuItem("退出");
 
             // 添加菜单项到ContextMenuStrip
-            contextMenuStrip.Items.AddRange(new ToolStripItem[] { menuItem1, menuItem2, menuItem3 });
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { menuItem1, menuItem8, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6, menuItem7, menuItem90 });
 
             // 将ContextMenuStrip关联到表单，以便于弹出右键菜单
             this.ContextMenuStrip = contextMenuStrip;
 
             // 可选：为表单添加鼠标点击事件
             this.MouseClick += new MouseEventHandler(FileOpen_MouseClick);
+            MenuePdf.Renderer.MouseClick += MenuePdf_cilck;//这是我们添加的代码
+
+            menuItem1.MouseUp += FileOpen_MouseClick;
+            menuItem2.MouseUp += rotatePage_MouseClick;
+            menuItem3.MouseUp += rotatePage_MouseClick;
+            menuItem4.MouseUp += rotatePage_MouseClick;
+            menuItem5.MouseUp += rotatePage_MouseClick;
+            menuItem6.MouseUp += rotatePage_MouseClick;
+            menuItem7.MouseUp += rotatePage_MouseClick;
+            menuItem8.MouseUp += rotatePage_MouseClick;
         }
         //窗口移动处理
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -49,6 +69,22 @@ namespace MdPDF
         public const int WM_SYSCOMMAND = 0x0112;
         public const int SC_MOVE = 0xF010;
         public const int HTCAPTION = 0x0002;
+        //相对路径
+        string address = System.Environment.CurrentDirectory;
+        private void MenuePdf_cilck(object sender, MouseEventArgs e)
+        {
+            PdfiumViewer.PdfRenderer currentRenderer = (PdfiumViewer.PdfRenderer)sender;
+            currentPage = currentRenderer.PointToPdf(e.Location).Page;//获取左侧单击的页码是多少
+            if (e.Button == MouseButtons.Left)//单击左键，我们实现的在右侧切换到相应界面
+            {
+                //更新显示窗口页
+                ViewerPdf.Renderer.Page = currentPage;
+            }
+            else
+            {
+                //单击右键我们准备实现的一些功能
+            }
+        }
         private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -94,6 +130,7 @@ namespace MdPDF
 
         private void FileOpen_MouseClick(object sender, MouseEventArgs e)
         {
+            //Trace.WriteLine("右击进行菜单");
             // 如果是右键点击，显示弹出菜单
             if (e.Button == MouseButtons.Left)
             {
@@ -114,7 +151,12 @@ namespace MdPDF
                             return;
                         }
                         //_Path.Text = dialog.FileName;
+                        StreamWriter s = new StreamWriter(address + "\\Menu.ini", true);//true:
+                        s.WriteLine(dialog.FileName);//写入INI文件
+                        s.Flush();//清空缓存数据，并将缓存数据写入基础流
+                        s.Close();
                         StartPdf(dialog.FileName);
+                        readFileIni();//读取文件到菜单历史
                     }
                 }
                 catch (Exception)
@@ -123,7 +165,27 @@ namespace MdPDF
                 }
             }
         }
-
+        private void readFileIni()
+        {
+            StreamReader sr = new StreamReader(address + "\\Menu.ini");
+            int i = this.iniMenu.DropDownItems.Count - 2;
+            Trace.WriteLine("ITEMS:" + this.iniMenu.DropDownItems.Count);
+            while (sr.Peek() >= 0)
+            {
+                ToolStripMenuItem menuitem = new ToolStripMenuItem(sr.ReadLine());
+                //menuitem
+                Trace.WriteLine("menuitem:" + menuitem.Text);
+                //this.iniMenu.DropDownItems.Insert(i, menuitem);
+                this.iniMenu.DropDownItems.Add(menuitem);
+                i++;
+                menuitem.Click += new EventHandler(openIniFile_MouseClick);
+                if (i >= 10)
+                {
+                    break; // 跳出while循环
+                }
+            }
+            sr.Close();
+        }
         private void StartPdf(string pdfPath)
         {
             MenuePdf.Document?.Dispose();
@@ -152,16 +214,30 @@ namespace MdPDF
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void rightPdf_Click(object sender, EventArgs e)
-        {            
+        {
             // 获取当前页的索引
-            int currentPageIndex = ViewerPdf.Renderer.Page;
+            var currentPageIndex = ViewerPdf.Renderer.Page;
             //MessageBox.Show("right当前页为：" + currentPageIndex);
             // 获取PDF页面对象            
-                ViewerPdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate90);
-            // MessageBox.Show("right当前页为：" + currentPageIndex+ "numerXZ:" + numerXZ);
-            // 刷新PdfiumViewer控件显示
-            //ViewerPdf.Refresh();
-            //MenuePdf.Document.p
+            // PdfiumViewer全部旋转90-此处为内存或是容器中旋转，保存后不发生变更。
+            //ViewerPdf.Renderer.RotateLeft();
+            // ViewerPdf.Renderer.Rotation = PdfRotation.Rotate90;
+            Trace.WriteLine("前-ViewerPdf.Renderer高度：" + ViewerPdf.Renderer.Height);//变更前高度
+            // PdfiumViewer单页旋转90-变更文档内容
+            MenuePdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate90);
+            ViewerPdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate90);
+            //PdfRotation rotation = ViewerPdf.Renderer.Rotation
+            // 刷新PdfiumViewer控件显示            
+            //ViewerPdf.Renderer.Height = 493;
+            ViewerPdf.Renderer.ZoomIn();
+            ViewerPdf.Renderer.ZoomOut();
+            MenuePdf.Renderer.ZoomIn();
+            MenuePdf.Renderer.ZoomOut();
+            ViewerPdf.Size = new Size(300, 500);
+            //double zoomMax = MenuePdf.Renderer.ZoomMax;
+            Trace.WriteLine("后-ViewerPdf.Renderer高度：" + ViewerPdf.Renderer.Document.PageSizes);//变更后高度
+            //ViewerPdf.Renderer.Document.r();
+            MenuePdf.Renderer.Refresh();
         }
         /// <summary>
         /// 翻页矩形框变化时，更新当前页码
@@ -174,10 +250,11 @@ namespace MdPDF
             try
             {
                 menupage.Text = "页码：第" + (ViewerPdf.Renderer.Page + 1).ToString() + "/" + ViewerPdf.Document.PageCount + "页";
+                MenuePdf.Renderer.Page = ViewerPdf.Renderer.Page;
             }
             catch (Exception eer)
             {
-
+                MessageBox.Show("页码出错：" + eer);
             }
         }
         /// <summary>
@@ -195,11 +272,65 @@ namespace MdPDF
             MessageBox.Show("left当前页为：" + currentPageIndex);
             // 获取PDF页面对象
             //ViewerPdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate180);
-            
+
             // 保存文档更改
             //ViewerPdf.Document.Save();
             // 刷新PdfiumViewer控件显示
             ViewerPdf.Refresh();
+        }
+        private void rotatePage_MouseClick(object sender, MouseEventArgs e)
+        {
+            // 获取当前页的索引
+            var currentPageIndex = ViewerPdf.Renderer.Page;
+            Trace.WriteLine("当前页：" + currentPageIndex);
+            //if(NullReferenceException(ViewerPdf.Renderer.Document.PageCount)) { return; }
+            switch (sender.ToString())
+            {
+                case "顺时90C":
+                    MenuePdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate90);
+                    ViewerPdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate90);
+                    break;
+                case "顺时180C":
+                    MenuePdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate180);
+                    ViewerPdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate180);
+                    break;
+                case "顺时270C":
+                    MenuePdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate270);
+                    ViewerPdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate270);
+                    break;
+                case "复位":
+                    MenuePdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate0);
+                    ViewerPdf.Document.RotatePage(currentPageIndex, PdfRotation.Rotate0);
+                    break;
+                case "逆时90C":
+                    MenuePdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-45));
+                    ViewerPdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-45));
+                    break;
+                case "逆时180C":
+                    MenuePdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-90));
+                    ViewerPdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-90));
+                    break;
+                case "逆时270C":
+                    MenuePdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-135));
+                    ViewerPdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-135));
+                    break;
+            }
+            // 刷新PdfiumViewer控件显示            
+            ViewerPdf.Renderer.ZoomIn();
+            ViewerPdf.Renderer.ZoomOut();
+            MenuePdf.Renderer.ZoomIn();
+            MenuePdf.Renderer.ZoomOut();
+        }
+
+        private void MdPDF_Load(object sender, EventArgs e)
+        {
+            readFileIni();//读取文件到菜单历史
+        }
+        private void openIniFile_MouseClick(object sender, EventArgs e)
+        {
+            sender.ToString();
+            Trace.WriteLine("文件名："+ sender.ToString());
+            StartPdf(sender.ToString());
         }
     }
 }

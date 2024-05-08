@@ -39,10 +39,13 @@ namespace MdPDF
             ToolStripMenuItem menuItem6 = new ToolStripMenuItem("逆时180C");
             ToolStripMenuItem menuItem7 = new ToolStripMenuItem("逆时270C");
             ToolStripMenuItem menuItem8 = new ToolStripMenuItem("复位");
+            ToolStripMenuItem menuItem9 = new ToolStripMenuItem("删除");
+            ToolStripMenuItem menuItem10 = new ToolStripMenuItem("插入");
+            ToolStripMenuItem menuItem11 = new ToolStripMenuItem("拆分");
             ToolStripMenuItem menuItem90 = new ToolStripMenuItem("退出");
 
             // 添加菜单项到ContextMenuStrip
-            contextMenuStrip.Items.AddRange(new ToolStripItem[] { menuItem1, menuItem8, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6, menuItem7, menuItem90 });
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { menuItem1, menuItem8, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6, menuItem7, menuItem9, menuItem10, menuItem11, menuItem90 });
 
             // 将ContextMenuStrip关联到表单，以便于弹出右键菜单
             this.ContextMenuStrip = contextMenuStrip;
@@ -59,6 +62,9 @@ namespace MdPDF
             menuItem6.MouseUp += rotatePage_MouseClick;
             menuItem7.MouseUp += rotatePage_MouseClick;
             menuItem8.MouseUp += rotatePage_MouseClick;
+            menuItem9.MouseUp += rotatePage_MouseClick;
+            menuItem10.MouseUp += rotatePage_MouseClick;
+            menuItem11.MouseUp += rotatePage_MouseClick;
         }
         //窗口移动处理
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -298,6 +304,15 @@ namespace MdPDF
                     MenuePdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-135));
                     ViewerPdf.Document.RotatePage(currentPageIndex, (PdfRotation)(-135));
                     break;
+                case "删除":
+                    DelPag(currentPageIndex);
+                    break;
+                case "插入":
+                    InstPag();
+                    break;
+                case "拆分":
+                    SplitPag();
+                    break;
             }
             // 刷新PdfiumViewer控件显示            
             ViewerPdf.Renderer.ZoomIn();
@@ -305,7 +320,24 @@ namespace MdPDF
             MenuePdf.Renderer.ZoomIn();
             MenuePdf.Renderer.ZoomOut();
         }
+        private void DelPag(int currentPageIndex)
+        {
+            DelPdf delPdf = new DelPdf(currentPageIndex, ViewerPdf.Renderer.Document.PageCount);
+            delPdf.ShowDialog();
+            if(delPdf.DialogResult == DialogResult.OK)
+            {
+                //开始执行删除
+                MessageBox.Show("删除完成。");
+            }
+        }
+        private void InstPag()
+        {
 
+        }
+        private void SplitPag()
+        {
+
+        }
         private void MdPDF_Load(object sender, EventArgs e)
         {
             readFileIni();//读取文件到菜单历史

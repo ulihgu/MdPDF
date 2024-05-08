@@ -79,11 +79,11 @@
             this.rotateLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.rotateLabel.ForeColor = System.Drawing.Color.White;
             this.rotateLabel.Image = ((System.Drawing.Image)(resources.GetObject("rotateLabel.Image")));
-            this.rotateLabel.Location = new System.Drawing.Point(167, 0);
+            this.rotateLabel.Location = new System.Drawing.Point(202, 0);
             this.rotateLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.rotateLabel.Name = "rotateLabel";
             this.rotateLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.rotateLabel.Size = new System.Drawing.Size(91, 79);
+            this.rotateLabel.Size = new System.Drawing.Size(101, 79);
             this.rotateLabel.TabIndex = 7;
             this.rotateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.rotateLabel, "调整旋转角度");
@@ -100,16 +100,16 @@
             this.historyMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.historyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iniMenu});
-            this.historyMenu.Location = new System.Drawing.Point(251, 18);
+            this.historyMenu.Location = new System.Drawing.Point(297, 18);
             this.historyMenu.Name = "historyMenu";
-            this.historyMenu.Size = new System.Drawing.Size(138, 39);
+            this.historyMenu.Size = new System.Drawing.Size(138, 42);
             this.historyMenu.TabIndex = 6;
             this.historyMenu.Text = "历史记录";
             // 
             // iniMenu
             // 
             this.iniMenu.Name = "iniMenu";
-            this.iniMenu.Size = new System.Drawing.Size(130, 35);
+            this.iniMenu.Size = new System.Drawing.Size(130, 38);
             this.iniMenu.Text = "历史记录";
             // 
             // FileOpen
@@ -120,11 +120,11 @@
             this.FileOpen.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.FileOpen.ForeColor = System.Drawing.Color.White;
             this.FileOpen.Image = ((System.Drawing.Image)(resources.GetObject("FileOpen.Image")));
-            this.FileOpen.Location = new System.Drawing.Point(91, 0);
+            this.FileOpen.Location = new System.Drawing.Point(103, 0);
             this.FileOpen.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.FileOpen.Name = "FileOpen";
             this.FileOpen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FileOpen.Size = new System.Drawing.Size(76, 79);
+            this.FileOpen.Size = new System.Drawing.Size(99, 79);
             this.FileOpen.TabIndex = 5;
             this.FileOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.FileOpen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FileOpen_MouseClick);
@@ -140,7 +140,7 @@
             this.logo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.logo.Name = "logo";
             this.logo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.logo.Size = new System.Drawing.Size(91, 79);
+            this.logo.Size = new System.Drawing.Size(103, 79);
             this.logo.TabIndex = 4;
             this.logo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

@@ -21,6 +21,7 @@ namespace MdPDF
     {
         private ContextMenuStrip contextMenuStrip;
         private int currentPage = 0;
+        private int currentPageIndex = 0;
         public MdPDF()
         {
             InitializeComponent();
@@ -271,7 +272,7 @@ namespace MdPDF
         private void rotatePage_MouseClick(object sender, MouseEventArgs e)
         {
             // 获取当前页的索引
-            var currentPageIndex = ViewerPdf.Renderer.Page;
+            currentPageIndex = ViewerPdf.Renderer.Page;
             Trace.WriteLine("当前页：" + currentPageIndex);
             //if(NullReferenceException(ViewerPdf.Renderer.Document.PageCount)) { return; }
             switch (sender.ToString())
@@ -332,11 +333,23 @@ namespace MdPDF
         }
         private void InstPag()
         {
-
+            InstPdf instPdf = new InstPdf(currentPageIndex, ViewerPdf.Renderer.Document.PageCount);
+            instPdf.ShowDialog();
+            if (instPdf.DialogResult == DialogResult.OK)
+            {
+                //开始执行删除
+                MessageBox.Show("合并PDF完成。");
+            }
         }
         private void SplitPag()
         {
-
+            SplitePdf splitePdf = new SplitePdf(currentPageIndex, ViewerPdf.Renderer.Document.PageCount);
+            splitePdf.ShowDialog();
+            if (splitePdf.DialogResult == DialogResult.OK)
+            {
+                //开始执行删除
+                MessageBox.Show("拆分PDF完成。");
+            }
         }
         private void MdPDF_Load(object sender, EventArgs e)
         {

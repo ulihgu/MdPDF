@@ -80,6 +80,12 @@
     <Compile Include="DelPdf.Designer.cs">
       <DependentUpon>DelPdf.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstPdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstPdf.Designer.cs">
+      <DependentUpon>InstPdf.cs</DependentUpon>
+    </Compile>
     <Compile Include="MdPDF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,8 +94,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplitePdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplitePdf.Designer.cs">
+      <DependentUpon>SplitePdf.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DelPdf.resx">
       <DependentUpon>DelPdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstPdf.resx">
+      <DependentUpon>InstPdf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdPDF.resx">
       <DependentUpon>MdPDF.cs</DependentUpon>
@@ -104,6 +119,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SplitePdf.resx">
+      <DependentUpon>SplitePdf.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

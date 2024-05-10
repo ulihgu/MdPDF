@@ -32,9 +32,9 @@
             this.DelLabel = new System.Windows.Forms.Label();
             this.DelBut = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +47,7 @@
             this.DelTextBox.Name = "DelTextBox";
             this.DelTextBox.Size = new System.Drawing.Size(739, 42);
             this.DelTextBox.TabIndex = 0;
+            this.DelTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DelTextBox_KeyPress);
             // 
             // DelLabel
@@ -81,24 +82,7 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 433);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 168);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(406, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "1.删除单页，请直接输入页码，如：2";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 212);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(658, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "2.删除多页且不连续，请输入页码并用\\\",\\\"分割，如：2,4,6";
+            this.groupBox1.Text = "删除PDF页";
             // 
             // label3
             // 
@@ -109,6 +93,24 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "3.删除多页连续页码，请用\\\"-\\\"，如：2-6，表示删除2到6页";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 212);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(658, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "2.删除多页且不连续，请输入页码并用\\\",\\\"分割，如：2,4,6";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 168);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(406, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "1.删除单页，请直接输入页码，如：2";
+            // 
             // DelPdf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -117,8 +119,8 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "DelPdf";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "删除PDF页";
             this.Load += new System.EventHandler(this.DelPdf_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

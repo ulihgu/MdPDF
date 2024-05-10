@@ -81,7 +81,7 @@ namespace MdPDF
         private void DelPdf_Load(object sender, EventArgs e)
         {
             DelLabel.Text = "本文档共" + totalPage.ToString() + "页，准备删除:";
-            DelTextBox.Text = deletePage.ToString();
+            DelTextBox.Text = (deletePage+1).ToString();
         }
 
         private void DelTextBox_KeyPress(object sender, KeyPressEventArgs e)
